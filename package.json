@@ -1,0 +1,11 @@
+{
+  "name": "iskra-food-service",
+  "version": "1.0.0",
+  "description": "food service",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zefus",
+  "license": "ISC"
+}
