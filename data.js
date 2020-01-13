@@ -1,5 +1,4 @@
-module.exports = {
-  products: [
+module.exports = [
     {
       title: "titleName1",
       price: 100
@@ -8,5 +7,4 @@ module.exports = {
       title: "titleName2",
       price: 150
     }
-  ]
-};
+  ];
