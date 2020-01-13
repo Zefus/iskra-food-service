@@ -13,8 +13,14 @@ class Root extends React.Component {
     fetch(`/api/data`)
     .then(res => res.json())
     .then(body => {
-      console.log(body);
+      this.setState({ products: body });
+    }).catch((error) => {
+      console.log(error);
     });
+  }
+
+  render() {
+    return;
   }
 }
 
