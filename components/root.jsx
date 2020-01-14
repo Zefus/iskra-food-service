@@ -20,7 +20,11 @@ class Root extends React.Component {
   }
 
   render() {
-    return;
+    return <div className="grid-container">
+             <div className="grid-product-list">
+             Product list
+             </div>
+           </div>;
   }
 }
 
