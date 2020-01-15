@@ -22,7 +22,23 @@ class Root extends React.Component {
   render() {
     return <div className="grid-container">
              <div className="grid-product-list">
-             Product list
+              <ul className="list-group">
+              {
+                this.state.products.map(product => {
+                  return <li className="list-group-item" key={product}>
+                          <div className="grid-group-item">
+                           <div className="title-label">
+                            {product.title}
+                           </div>
+                           <div className="price-label">
+                            {product.price}
+                           </div>
+                           <button type="button" className="btn btn-success">Добавить</button>
+                          </div>
+                        </li>
+                })
+              }
+              </ul>
              </div>
            </div>;
   }
