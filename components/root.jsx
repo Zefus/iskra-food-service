@@ -5,8 +5,10 @@ class Root extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      products: []
+      products: [],
+      orderList: []
     };
+    this.add = this.add.bind(this);
   }
 
   componentWillMount() {
@@ -17,6 +19,14 @@ class Root extends React.Component {
     }).catch((error) => {
       console.log(error);
     });
+  }
+
+  add(product) {
+    console.log(product);
+    var orderList = this.state.orderList;
+    orderList.push(product);
+    console.log(orderList);
+    this.setState({ orderList: orderList });
   }
 
   render() {
@@ -33,14 +43,33 @@ class Root extends React.Component {
                            <div className="price-label">
                             {product.price}
                            </div>
-                           <button type="button" className="btn btn-success">Добавить</button>
+                           <button type="button" className="btn btn-success" onClick={this.add.bind(null, product)}>Add</button>
                           </div>
                         </li>
                 })
               }
               </ul>
              </div>
-           </div>;
+             <div className="grid-order-list">
+              <ul className="list-group">
+              {
+                 this.state.orderList.map(order => {
+                  return <li className="list-group-item" key={order}>
+                    <div className="grid-group-item">
+                     <div className="title-label">
+                      {order.title}
+                     </div>
+                     <div className="price-label">
+                      {order.price}
+                     </div>
+                     <button type="button" className="btn btn-danger">Remove</button>
+                    </div>
+                   </li>
+                 })
+               }
+              </ul>
+             </div>
+           </div>
   }
 }
 
