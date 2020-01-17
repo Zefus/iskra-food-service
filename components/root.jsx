@@ -6,9 +6,11 @@ class Root extends React.Component {
     super(props);
     this.state = {
       products: [],
-      orderList: []
+      orderList: [],
     };
+    //this.index = 1;
     this.add = this.add.bind(this);
+    this.remove = this.remove.bind(this);
   }
 
   componentWillMount() {
@@ -29,6 +31,14 @@ class Root extends React.Component {
     this.setState({ orderList: orderList });
   }
 
+  remove(order) {
+    var index = this.state.orderList.indexOf(order);
+    var orderList = this.state.orderList;
+    orderList.splice(index, 1);
+    console.log(orderList);
+    this.setState({ orderList: orderList });
+  }
+
   render() {
     return <div className="grid-container">
              <div className="grid-product-list">
@@ -43,7 +53,9 @@ class Root extends React.Component {
                            <div className="price-label">
                             {product.price}
                            </div>
-                           <button type="button" className="btn btn-success" onClick={this.add.bind(null, product)}>Add</button>
+                           <button type="button"
+                                   className="btn btn-success"
+                                   onClick={this.add.bind(null, product)}>Add</button>
                           </div>
                         </li>
                 })
@@ -62,12 +74,16 @@ class Root extends React.Component {
                      <div className="price-label">
                       {order.price}
                      </div>
-                     <button type="button" className="btn btn-danger">Remove</button>
+                     <button type="button"
+                             className="btn btn-danger"
+                             onClick={this.remove.bind(null, order)}>Remove</button>
                     </div>
                    </li>
                  })
                }
               </ul>
+             </div>
+             <div className="grid-group">
              </div>
            </div>
   }
