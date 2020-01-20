@@ -8,7 +8,6 @@ class Root extends React.Component {
       products: [],
       orderList: [],
     };
-    //this.index = 1;
     this.add = this.add.bind(this);
     this.remove = this.remove.bind(this);
   }
