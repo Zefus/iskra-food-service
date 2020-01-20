@@ -7,6 +7,7 @@ class Root extends React.Component {
     this.state = {
       products: [],
       orderList: [],
+      totalPrice: 0
     };
     this.add = this.add.bind(this);
     this.remove = this.remove.bind(this);
@@ -23,23 +24,24 @@ class Root extends React.Component {
   }
 
   add(product) {
-    console.log(product);
     var orderList = this.state.orderList;
     orderList.push(product);
-    console.log(orderList);
-    this.setState({ orderList: orderList });
+    var totalPrice = this.state.totalPrice + product.price;
+    this.setState({ orderList: orderList, totalPrice: totalPrice });
   }
 
   remove(order) {
+    console.log(order);
     var index = this.state.orderList.indexOf(order);
     var orderList = this.state.orderList;
     orderList.splice(index, 1);
-    console.log(orderList);
-    this.setState({ orderList: orderList });
+    var totalPrice = this.state.totalPrice - order.price;
+    this.setState({ orderList: orderList, totalPrice: totalPrice });
   }
 
   render() {
     return <div className="grid-container">
+            <div className="bg-image"></div>
              <div className="grid-product-list">
               <ul className="list-group">
               {
@@ -53,7 +55,7 @@ class Root extends React.Component {
                             {product.price}
                            </div>
                            <button type="button"
-                                   className="btn btn-success"
+                                   className="btn btn-success btn-item"
                                    onClick={this.add.bind(null, product)}>Add</button>
                           </div>
                         </li>
@@ -74,7 +76,7 @@ class Root extends React.Component {
                       {order.price}
                      </div>
                      <button type="button"
-                             className="btn btn-danger"
+                             className="btn btn-danger btn-item"
                              onClick={this.remove.bind(null, order)}>Remove</button>
                     </div>
                    </li>
@@ -83,6 +85,13 @@ class Root extends React.Component {
               </ul>
              </div>
              <div className="grid-group">
+              <div className="group-label">
+               <div className="total-price-label">
+                {this.state.totalPrice}
+               </div>
+              </div>
+              <button type="button"
+                      className="btn btn-primary button-order">Order</button>
              </div>
            </div>
   }
