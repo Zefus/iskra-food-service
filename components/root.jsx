@@ -31,7 +31,6 @@ class Root extends React.Component {
   }
 
   remove(order) {
-    console.log(order);
     var index = this.state.orderList.indexOf(order);
     var orderList = this.state.orderList;
     orderList.splice(index, 1);
