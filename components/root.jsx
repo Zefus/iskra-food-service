@@ -71,6 +71,9 @@ class Root extends React.Component {
                      <div className="title-label">
                       {order.title}
                      </div>
+                     <div className="count-label">
+
+                     </div>
                      <div className="price-label">
                       {order.price}
                      </div>

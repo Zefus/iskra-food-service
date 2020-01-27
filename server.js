@@ -11,10 +11,6 @@ app.get('/', (req, res) => {
   res.sendFile("index.html", { root: __dirname });
 });
 
-app.get('/api/data', (req, res) => {
-  res.json(data);
-});
-
 app.listen(port, () => {
   console.log(__dirname);
   console.log("Listening Port " + port);
